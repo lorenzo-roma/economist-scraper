@@ -1,11 +1,11 @@
-import Article from "../models/article";
-import ArticleService from "./article-service-interface";
-import Config from "../config/config";
-import ArticleDetail from "../models/article-detail";
-import ServiceProvider from "./service-provider";
-import APIResponse from "../models/api-response";
-import ServiceResponse from "../models/service-response";
-import ServiceResponseStatus from "../models/service-response-status";
+import Article from "../../models/article";
+import ArticleService from "../article-service/article-service-interface";
+import Config from "../../config/config";
+import ArticleDetail from "../../models/article-detail";
+import ServiceProvider from "../service-provider";
+import APIResponse from "../../models/api-response";
+import ServiceResponse from "../../models/service-response";
+import ServiceResponseStatus from "../../models/service-response-status";
 
 export default class APIArticleService implements ArticleService {
 

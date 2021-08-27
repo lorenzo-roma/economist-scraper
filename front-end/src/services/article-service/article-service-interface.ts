@@ -1,6 +1,6 @@
-import Article from "../models/article";
-import ArticleDetail from "../models/article-detail";
-import ServiceResponse from "../models/service-response";
+import Article from "../../models/article";
+import ArticleDetail from "../../models/article-detail";
+import ServiceResponse from "../../models/service-response";
 
 export default interface ArticleService {
     getList(): Promise<ServiceResponse<Article[]>>;

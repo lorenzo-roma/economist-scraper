@@ -2,8 +2,8 @@ import React, {ReactNode} from "react";
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import ArticleDetailScreen from "./screens/article-detail/screen";
 import ArticleListScreen from "./screens/article-list/screen";
-import LoginScreen from "./screens/login";
-import SignupScreen from "./screens/signup";
+import LoginScreen from "./screens/login/screen";
+import SignupScreen from "./screens/signup/screen";
 
 export default class App extends React.Component {
     

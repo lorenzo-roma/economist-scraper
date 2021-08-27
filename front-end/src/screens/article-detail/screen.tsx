@@ -1,8 +1,8 @@
 import React, { ReactNode } from "react";
-import {Redirect, useHistory} from "react-router-dom";
+import {Redirect} from "react-router-dom";
 import LoadingSpinner from "../../components/loading-spinner";
 import ArticleDetail from "../../models/article-detail";
-import ArticleService from "../../services/article-service-interface";
+import ArticleService from "../../services/article-service/article-service-interface";
 import ServiceProvider from "../../services/service-provider";
 import ArticleHeading from "./article-heading";
 import ArticleBody from "./article-body";

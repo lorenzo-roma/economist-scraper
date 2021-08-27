@@ -1,8 +1,8 @@
 
 enum ServiceResponseStatus {
-    SUCCESS, 
-    UNAUTHORIZED,
-    ERROR
+    SUCCESS= "Success", 
+    UNAUTHORIZED= "Unauthorized",
+    ERROR = "Error"
 }
 
 export default ServiceResponseStatus;;

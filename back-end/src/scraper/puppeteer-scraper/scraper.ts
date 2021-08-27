@@ -14,16 +14,13 @@ export default class PuppeteersScraper implements Scraper {
     }
 
     async getArticleDetail(url: string): Promise<ArticleDetail> {
-        const browser = await puppeteer.launch({headless:true});
+        const browser = await puppeteer.launch({headless:false});
         const page = await browser.newPage();
         console.log(`Loading page ${url}...`);
         await page.goto(url, {timeout: 0});
         console.log(`Page ${url} loaded!`);
-        await page.waitForNavigation();
-        const cookieConsent = await page.$("#_evidon-banner-acceptbutton");
-        if(cookieConsent!=null){
-            await page.click("#_evidon-banner-acceptbutton");
-        }
+        await page.waitForSelector("#_evidon-banner-acceptbutton");
+        await page.click("#_evidon-banner-acceptbutton");
         await this.performLogin(page);
         console.log(`Retrieving article detail data!`);
         await page.waitForSelector('[data-analytics="sidebar:section"]');
@@ -107,11 +104,6 @@ export default class PuppeteersScraper implements Scraper {
     }
 
     async performLogin(page: any): Promise<void>{
-        const myAccountDropDown = await page.$(".my-account-link");
-        if(myAccountDropDown!=null){
-            console.log("Already logged in");
-            return;
-        }
         console.log("Performing login");
         await page.waitForSelector('[data-analytics="masthead:login"]');
         await page.click('[data-analytics="masthead:login"]') 

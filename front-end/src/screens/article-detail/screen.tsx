@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import {Redirect} from "react-router-dom";
+import {Link, Redirect} from "react-router-dom";
 import LoadingSpinner from "../../components/loading-spinner";
 import ArticleDetail from "../../models/article-detail";
 import ArticleService from "../../services/article-service/article-service-interface";
@@ -9,6 +9,7 @@ import ArticleBody from "./article-body";
 import ArticleDetailScreenState from "./states";
 import ServiceResponse from "../../models/service-response";
 import ServiceResponseStatus from "../../models/service-response-status";
+import LogoutButton from "./logout/logout-button";
 
 type ComponentProps = {}
 type ComponentState = {current: ArticleDetailScreenState, detail?:ArticleDetail}
@@ -52,6 +53,8 @@ export default class ArticleDetailScreen extends React.Component<ComponentProps,
     render() : ReactNode {
         return (
             <div>
+                <Link to="/">to list</Link>
+                <LogoutButton />
                 {this.loadContent()}
             </div>
         );

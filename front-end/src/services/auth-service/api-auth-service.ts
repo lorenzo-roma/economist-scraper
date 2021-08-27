@@ -33,8 +33,12 @@ export default class APIAuthService implements AuthService {
         }
     }
 
-    getToken(): string {
-        return this.token!;
+    async logout(): Promise<void>{
+        this.token = undefined;
+    }
+
+    getToken(): string | undefined {
+        return this.token;
     }
 
     handleAPIServiceResponse(response: APIResponse){

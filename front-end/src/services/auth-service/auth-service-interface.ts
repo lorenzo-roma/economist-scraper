@@ -4,7 +4,8 @@ import AuthData from "../../models/auth-data";
 
 
 export default interface AuthService {
-    getToken(): string;
+    getToken(): string | undefined;
     login(data: AuthData): Promise<ServiceResponse<AuthResult>>
     signup(data: AuthData): Promise<ServiceResponse<AuthResult>>
+    logout(): Promise<void>
 }

@@ -1,11 +1,19 @@
 import React, {ReactNode} from "react";
+import {Link} from "react-router-dom";
+import Article from "../../models/article";
 
-
-export default class ArticleListItem extends React.Component {
+type ComponentProps = {article: Article}
+export default class ArticleListItem extends React.Component<ComponentProps> {
 
     render(): ReactNode {
+        const a = this.props.article;
         return (
-            <li>Article item</li>
+            <Link to={{
+                pathname:"/detail",
+                search:"?url="+encodeURI(a.url)
+            }}>
+                <li>{a.title}</li>
+            </Link>
         );
     }
 

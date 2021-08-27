@@ -4,20 +4,29 @@ import ArticleListScreenState from "./states";
 import LoadingSpinner from "../../components/loading-spinner";
 import ArticlesList from "./list";
 import ArticleListItem from "./list-item";
+import ServiceProvider from "../../services/service-provider";
+import ArticleService from "../../services/article-service-interface";
+import Article from "../../models/article";
+
 
 type ComponentProps = {};
-type ComponentState = { current: ArticleListScreenState };
+type ComponentState = { current: ArticleListScreenState, articles?: Article[] };
 export default class ArticleListScreen extends React.Component<ComponentProps, ComponentState>{
 
     constructor(props: ComponentProps){
         super(props);
         this.state = {current: ArticleListScreenState.MOUNTING};
-        this.fetchArticles();
     }
 
-    fetchArticles():void{
+    async fetchArticles():Promise<void>{
+        const service: ArticleService = ServiceProvider.getArticleService();
         this.setState({current: ArticleListScreenState.LOADING_ARTICLES});
-        setTimeout(() => this.setState({current: ArticleListScreenState.ARTICLES_FETCHED}), 3000)
+        const articles = await service.getList();
+        this.setState({current: ArticleListScreenState.ARTICLES_FETCHED, articles: articles});
+    }
+
+    componentDidMount(): void {
+        this.fetchArticles();
     }
 
     render() : ReactNode {
@@ -38,13 +47,7 @@ export default class ArticleListScreen extends React.Component<ComponentProps, C
             case ArticleListScreenState.LOADING_ARTICLES:
                 return <LoadingSpinner />
             case ArticleListScreenState.ARTICLES_FETCHED:
-                return (
-                    <ArticlesList>
-                        <ArticleListItem/>
-                        <ArticleListItem/>
-                        <ArticleListItem/>
-                    </ArticlesList>
-                );
+                return <ArticlesList items={this.state.articles!} />;
         }
     }
 

@@ -5,6 +5,7 @@ import ArticleDetail from "../../models/article-detail";
 import ArticleService from "../../services/article-service-interface";
 import ServiceProvider from "../../services/service-provider";
 import ArticleHeading from "./article-heading";
+import ArticleBody from "./article-body";
 import ArticleDetailScreenState from "./states";
 
 type ComponentProps = {}
@@ -27,6 +28,7 @@ export default class ArticleDetailScreen extends React.Component<ComponentProps,
         const service: ArticleService = ServiceProvider.getArticleService();
         this.setState({current: ArticleDetailScreenState.LOADING_DETAILS});
         const detail = await service.getDetail(url);
+        console.log(detail);
         this.setState({current: ArticleDetailScreenState.DETAILS_FETCHED, detail: detail});
     }
 
@@ -45,7 +47,13 @@ export default class ArticleDetailScreen extends React.Component<ComponentProps,
             case ArticleDetailScreenState.LOADING_DETAILS:
                 return <LoadingSpinner />
             case ArticleDetailScreenState.DETAILS_FETCHED:
-                return <ArticleHeading detail={this.state.detail!} />
+                return (
+                    <div>
+                    <ArticleHeading detail={this.state.detail!} />
+                    <ArticleBody text={this.state.detail!.text} />
+                    </div>
+                );
+
         }
     }
 }

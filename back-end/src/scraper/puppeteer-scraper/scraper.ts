@@ -50,6 +50,7 @@ export default class PuppeteersScraper implements Scraper {
             }
             return completeText;
         });
+        console.log("Article detail data retrieved!");
         page.close();
         browser.close();
         return {section, subHeading, headline, description, leadImageUrl, dateTime, text};
@@ -98,6 +99,7 @@ export default class PuppeteersScraper implements Scraper {
         }));
         const articles = [...topStories, ...topicalContent, ...weeklyEdition];
         articles.forEach(a=>a.url = this.formatUrl(a.url));
+        console.log("Articles selected!")
         page.close();
         browser.close();
         return articles;
@@ -123,6 +125,7 @@ export default class PuppeteersScraper implements Scraper {
         const loginButton = await page.waitForXPath('/html/body/div[3]/div[3]/div[1]/div/div/div/div[2]/div/div/c-lwc-login-form/lightning-card/article/div[2]/slot/div[1]/div[3]/div[2]/lightning-button/button');
         await loginButton.click();
         console.log("Submitted second sign in form");
+        console.log("Login completed!");
         await page.waitForNavigation();
     }
 

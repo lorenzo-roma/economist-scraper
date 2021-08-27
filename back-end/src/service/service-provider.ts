@@ -13,7 +13,6 @@ export default class ServiceProvider {
     static async getArticleService(){
         if(this.articleService==null){
             const scraper = new PuppeteerScraper(Config.baseUrl, Config.articlesListPageUrl)
-            await scraper.init();
             this.articleService =  new ArticleServiceScraper(scraper);
         }
         return this.articleService;

@@ -7,24 +7,23 @@ export default class PuppeteersScraper implements Scraper {
 
     baseUrl: string
     articlesListPageUrl: string
-    browser;
 
     constructor(baseUrl: string, articlesPageUrl: string){
         this.baseUrl = baseUrl;
         this.articlesListPageUrl = articlesPageUrl;
     }
 
-    async init(): Promise<void> {
-        this.browser = await puppeteer.launch({headless:true});
-    }
-
     async getArticleDetail(url: string): Promise<ArticleDetail> {
-        const page = await this.browser.newPage();
+        const browser = await puppeteer.launch({headless:true});
+        const page = await browser.newPage();
         console.log(`Loading page ${url}...`);
         await page.goto(url, {timeout: 0});
         console.log(`Page ${url} loaded!`);
-        await page.waitForSelector("#_evidon-banner-acceptbutton");
-        await page.click("#_evidon-banner-acceptbutton");
+        await page.waitForNavigation();
+        const cookieConsent = await page.$("#_evidon-banner-acceptbutton");
+        if(cookieConsent!=null){
+            await page.click("#_evidon-banner-acceptbutton");
+        }
         await this.performLogin(page);
         console.log(`Retrieving article detail data!`);
         await page.waitForSelector('[data-analytics="sidebar:section"]');
@@ -54,13 +53,15 @@ export default class PuppeteersScraper implements Scraper {
             }
             return completeText;
         });
-
+        page.close();
+        browser.close();
         return {section, subHeadling, headline, description, leadImageUrl, dateTime, text};
 
     }
 
     async getArticlesList(): Promise<Article[]> {
-        const page = await this.browser.newPage();
+        const browser = await puppeteer.launch({headless:true});
+        const page = await browser.newPage();
         console.log(`Loading page ${this.articlesListPageUrl}...`);
         await page.goto(this.articlesListPageUrl, {waitUntil: 'load', timeout: 0});
         console.log(`Page ${this.articlesListPageUrl} loaded!`)
@@ -71,10 +72,10 @@ export default class PuppeteersScraper implements Scraper {
             return elements.map((el=>{
                 const title = el.textContent;
                 const url = el.getAttribute("href");
-                const desc = el.parentElement.nextElementSibling.textContent;
+                const abstract = el.parentElement.nextElementSibling.textContent;
                 const category = el.parentElement.previousElementSibling.textContent
                 const imgUrl = el.parentElement.parentElement.getElementsByTagName("img")[0]?.src ?? "";
-                return {title: title, url: url, desc: desc, category: category, imgUrl: imgUrl};
+                return {title: title, url: url, abstract: abstract, category: category, imgUrl: imgUrl};
             }));
         }));
         const topicalContent = await page.evaluate((()=>{
@@ -83,9 +84,9 @@ export default class PuppeteersScraper implements Scraper {
             return elements.map((el=>{
                 const title = el.textContent;
                 const url = el.getAttribute("href");
-                const desc = el.parentElement.nextElementSibling.textContent;
+                const abstract = el.parentElement.nextElementSibling.textContent;
                 const imgUrl = el.parentElement.parentElement.getElementsByTagName("img")[0]?.src ?? "";
-                return {title: title, url: url, desc: desc, imgUrl: imgUrl, category:category}; 
+                return {title: title, url: url, abstract: abstract, imgUrl: imgUrl, category:category}; 
             }));
         }));
         const weeklyEdition = await page.evaluate((()=>{
@@ -94,16 +95,23 @@ export default class PuppeteersScraper implements Scraper {
             return elements.map((el=>{
                 const title = el.textContent;
                 const url = el.getAttribute("href");
-                const desc = el.nextElementSibling.textContent;
-                return {title: title, url: url, desc: desc, category: category}; 
+                const abstract = el.nextElementSibling.textContent;
+                return {title: title, url: url, abstract: abstract, category: category}; 
             }));
         }));
         const articles = [...topStories, ...topicalContent, ...weeklyEdition];
         articles.forEach(a=>a.url = this.formatUrl(a.url));
+        page.close();
+        browser.close();
         return articles;
     }
 
     async performLogin(page: any): Promise<void>{
+        const myAccountDropDown = await page.$(".my-account-link");
+        if(myAccountDropDown!=null){
+            console.log("Already logged in");
+            return;
+        }
         console.log("Performing login");
         await page.waitForSelector('[data-analytics="masthead:login"]');
         await page.click('[data-analytics="masthead:login"]') 

@@ -1,5 +1,5 @@
 export default interface Article {
-    imgUrl: string,
+    imgUrl?: string,
     title: string;
     category: string,
     url: string;

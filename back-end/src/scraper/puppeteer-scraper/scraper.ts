@@ -14,7 +14,7 @@ export default class PuppeteersScraper implements Scraper {
     }
 
     async getArticleDetail(url: string): Promise<ArticleDetail> {
-        const browser = await puppeteer.launch({headless:false});
+        const browser = await puppeteer.launch({headless:true});
         const page = await browser.newPage();
         console.log(`Loading page ${url}...`);
         await page.goto(url, {timeout: 0});
@@ -27,7 +27,7 @@ export default class PuppeteersScraper implements Scraper {
         const section: string = await page.evaluate(()=>{
             return document.querySelector('[data-analytics="sidebar:section"]')?.textContent;
         });
-        const subHeadling: string = await page.evaluate(()=>{
+        const subHeading: string = await page.evaluate(()=>{
             return document.querySelector('[data-test-id="Article Subheadline"]')?.textContent;
         });
         const headline: string = await page.evaluate(()=>{
@@ -52,7 +52,7 @@ export default class PuppeteersScraper implements Scraper {
         });
         page.close();
         browser.close();
-        return {section, subHeadling, headline, description, leadImageUrl, dateTime, text};
+        return {section, subHeading, headline, description, leadImageUrl, dateTime, text};
 
     }
 

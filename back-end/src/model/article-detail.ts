@@ -1,7 +1,7 @@
 
 export default interface ArticleDetail {
     section: string,
-    subHeadling: string,
+    subHeading: string,
     headline: string,
     description:string,
     dateTime: string,

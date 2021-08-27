@@ -7,9 +7,9 @@ import ErrorHandler from "./middleware/error-handler-middleware";
 const app = express();
 
 app.use(express.json());
-app.use(CheckAuth);
 app.use(DisableCors);
+app.use(CheckAuth);
 app.use("/", router);
 app.use(ErrorHandler);
 
-app.listen(3000, ()=>console.log("Listening on port 3000."));
+app.listen(5000, ()=>console.log("Listening on port 5000."));

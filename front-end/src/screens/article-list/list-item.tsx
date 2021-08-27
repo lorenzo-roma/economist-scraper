@@ -10,7 +10,7 @@ export default class ArticleListItem extends React.Component<ComponentProps> {
         return (
             <Link to={{
                 pathname:"/detail",
-                search:"?url="+encodeURI(a.url)
+                search:"?url="+encodeURIComponent(a.url)
             }}>
                 <li>{a.title}</li>
             </Link>

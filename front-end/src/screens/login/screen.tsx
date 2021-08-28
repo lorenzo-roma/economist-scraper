@@ -12,11 +12,11 @@ export default class LoginScreen extends React.Component {
 
     render(): ReactNode {
         return (
-            <div>
-                <h1>Login</h1>
-                <Link to="/">To list</Link>
-                <Link to="/signup">To signup</Link>
+            <div className="center">
+                <div className="column">
+                <div className="text-bold mt-32 mb-16">Log in with <span className="text-bold-italic">The Economist</span></div>
                 <LoginForm onSubmit={this.login}/>
+                </div>
             </div>
         );
     }

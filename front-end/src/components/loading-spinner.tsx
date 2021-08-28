@@ -1,10 +1,13 @@
 import React, {ReactNode} from "react";
+import "../style/loader.css";
 
 export default class LoadingSpinner extends React.Component {
 
     render(): ReactNode {
         return (
-            <h1>Loading...</h1>
+            <div className="center">
+                <div className="loader"></div>
+            </div>
         );
     }
 

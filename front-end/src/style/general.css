@@ -5,7 +5,49 @@ body {
 }
 
 .fill{
-    padding: 20px;
+    padding: 20px 20vw;
     height: stretch;
     width: stretch;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+.center{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.text-bold{
+    font-size: 1.5rem;
+    font-family: 'Manuale', serif;
+    font-weight: 500;
+}
+
+.text-bold-italic{
+    font-size: 1.5rem;
+    font-family: 'Manuale', serif;
+    font-weight: 500;
+    font-style:italic;
+}
+
+.mt-32{
+    margin-top: 32px;
+}
+
+.mt-16{
+    margin-top:16px;
+}
+
+.mb-16{
+    margin-bottom:16px
 }

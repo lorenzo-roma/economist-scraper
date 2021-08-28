@@ -1,6 +1,7 @@
 import React, {ReactNode} from "react";
 import Article from "../../models/article";
 import ArticleListItem from "./list-item";
+import "../../style/list.css";
 
 type ComponentProps = {items: Article[]}
 export default class ArticlesList extends React.Component<ComponentProps> {
@@ -9,9 +10,9 @@ export default class ArticlesList extends React.Component<ComponentProps> {
 
         const listItems = this.props.items.map(a=><ArticleListItem article={a} />);
         return (
-            <ul className="list">
+            <div className="list">
                 {listItems}
-            </ul>
+            </div>
         );
     }
 

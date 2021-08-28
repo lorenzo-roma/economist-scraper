@@ -4,11 +4,15 @@ import ArticleDetailScreen from "./screens/article-detail/screen";
 import ArticleListScreen from "./screens/article-list/screen";
 import LoginScreen from "./screens/login/screen";
 import SignupScreen from "./screens/signup/screen";
+import Header from "./components/header";
+import "./style/general.css"
 
 export default class App extends React.Component {
     
     render(): ReactNode {
         return(
+            <div className="fill">
+            <Header />
             <BrowserRouter>
                 <Switch>
                     <Route exact path="/"><ArticleListScreen /></Route>
@@ -17,6 +21,7 @@ export default class App extends React.Component {
                     <Route path="/signup"><SignupScreen /></Route>
                 </Switch>
             </BrowserRouter>
+            </div>
         );
     }
 

@@ -49,13 +49,11 @@ export default class ArticleListScreen extends React.Component<ComponentProps, C
     render() : ReactNode {
         return  (
             <div>
-                <h1>LIST</h1>
-                <Link to="/detail">To detail</Link>
-                <Link to="/login">To login</Link>
                 {this.loadContent()}
             </div>
         );
     }
+
 
     loadContent(): ReactNode {
         switch(this.state.current){

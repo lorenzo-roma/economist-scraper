@@ -1,0 +1,12 @@
+#logo {
+    width: 200px;
+    height: 100%;
+    background-image: url("../assets/logo.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.header{
+    height: 10%;
+}

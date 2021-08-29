@@ -21,5 +21,8 @@
     "dev": "tsc -w & nodemon dist/app.js"
   },
   "author": "Lorenzo Romagnoni",
+  "engines": {
+    "node": "12.18.x"
+  },
   "license": "ISC"
 }

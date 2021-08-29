@@ -25,9 +25,9 @@ export default class LoginForm extends React.Component<ComponentProps, Component
             </div>
             <div className="row mt-16">
                 <div className="column center">
-                <div><span className="text-regular">Alreadt registered?</span> <span className="register">
+                <div><span className="text-regular">Already registered?</span> <span className="register">
                     <Link to="/login">
-                    Go to login
+                    Go to Login
                     </Link>
                     </span></div>
                 </div>

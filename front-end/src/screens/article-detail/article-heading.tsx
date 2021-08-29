@@ -14,7 +14,7 @@ export default class ArticleHeading extends React.Component<ComponentProps> {
             <div className="article-description">{this.props.detail.description}</div>
           </div>
         </div>
-        <img alt="article" src={this.props.detail.leadImageUrl} className="my-32"></img>x{" "}
+        <img alt="article" src={this.props.detail.leadImageUrl} className="my-32"></img>
       </div>
     );
   }

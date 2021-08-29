@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import {Link, Redirect} from "react-router-dom";
+import { Redirect} from "react-router-dom";
 import LoadingSpinner from "../../components/loading-spinner";
 import ArticleDetail from "../../models/article-detail";
 import ArticleService from "../../services/article-service/article-service-interface";

@@ -7,8 +7,9 @@ export default class ArticleBody extends React.Component<ComponentProps>{
         return <div className="article-body">{this.formatText(this.props.text)}</div>;
     }
 
-    formatText(text: string): string{
-        return text.split(". ").map();
+    formatText(text: string): ReactNode{
+        const paragraphs =  text.split(". ").map((p, i)=><p key={i}>{p}.</p>);
+        return <div>{paragraphs}</div>;
     }
 
 }

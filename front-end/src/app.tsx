@@ -11,18 +11,28 @@ export default class App extends React.Component {
     
     render(): ReactNode {
         return(
-            <div className="fill">
-            <Header />
+            <div className="wrapper">
             <BrowserRouter>
                 <Switch>
-                    <Route exact path="/"><ArticleListScreen /></Route>
-                    <Route path="/detail"><ArticleDetailScreen /></Route>
-                    <Route path="/login"><LoginScreen /></Route>
-                    <Route path="/signup"><SignupScreen /></Route>
+                    <Route exact path="/">{this.withHeader(<ArticleListScreen />)}</Route>
+                    <Route path="/detail">{this.withHeader(<ArticleDetailScreen />)}</Route>
+                    <Route path="/login">{this.withHeader(<LoginScreen />)}</Route>
+                    <Route path="/signup">{this.withHeader(<SignupScreen />)}</Route>
                 </Switch>
             </BrowserRouter>
             </div>
         );
+    }
+
+    withHeader(node: ReactNode): ReactNode {
+        
+        return (
+        <div>
+            <Header />
+            {node}
+        </div>
+        );
+
     }
 
 }

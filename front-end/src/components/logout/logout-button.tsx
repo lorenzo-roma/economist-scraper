@@ -1,8 +1,8 @@
 import React, {ReactNode} from "react";
 import { Redirect } from "react-router-dom";
-import LoadingSpinner from "../../../components/loading-spinner";
-import AuthService from "../../../services/auth-service/auth-service-interface";
-import ServiceProvider from "../../../services/service-provider";
+import LoadingSpinner from "../../components/loading-spinner";
+import AuthService from "../../services/auth-service/auth-service-interface";
+import ServiceProvider from "../../services/service-provider";
 import LogoutState from "./logout-state";
 
 type ComponentProps = {};
@@ -17,9 +17,9 @@ export default class LogoutButton extends React.Component<ComponentProps, Compon
 
     render(): ReactNode {
         return (
-            <button onClick={this.handleButtonClick}>
+            <div onClick={this.handleButtonClick}>
                 {this.loadContent()}
-            </button>
+            </div>
         );
     }
 
@@ -28,7 +28,7 @@ export default class LogoutButton extends React.Component<ComponentProps, Compon
         switch(this.state.current){
             case LogoutState.IDLE: return "Logout";
             case LogoutState.PERFORMING: return <LoadingSpinner />
-            case LogoutState.COMPLETED: return <Redirect to="/" />
+            case LogoutState.COMPLETED: return <Redirect to="/login" />
         }
     }
 

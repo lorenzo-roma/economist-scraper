@@ -4,7 +4,7 @@ import Article from "../../models/article";
 import "../../style/list-item.css"
 import fallbackImage from "../../assets/logo.png";
 
-type ComponentProps = { article: Article };
+type ComponentProps = { article: Article};
 export default class ArticleListItem extends React.Component<ComponentProps> {
   render(): ReactNode {
     const a = this.props.article;
@@ -33,7 +33,7 @@ export default class ArticleListItem extends React.Component<ComponentProps> {
     if(img){
       return (
         <div className="center">
-        <img src={img} onError={this.addDefaultSrc} className="list-item-img"></img>
+        <img src={img} alt="article" onError={this.addDefaultSrc} className="list-item-img"></img>
         </div>
       );
     }

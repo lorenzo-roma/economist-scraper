@@ -4,7 +4,7 @@ body {
     margin: 0;
 }
 
-.fill{
+.wrapper{
     padding: 20px 20vw;
     height: stretch;
     width: stretch;
@@ -56,6 +56,15 @@ body {
     margin: 32px 0;
 }
 
+.mx-16 {
+    margin: 0 16px;
+}
+
 .text-regular {
     font-weight: 400;
+}
+
+
+.fill{
+    flex:1;
 }

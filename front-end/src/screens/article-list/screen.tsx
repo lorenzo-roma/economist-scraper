@@ -1,5 +1,4 @@
 import React, { ReactNode } from "react";
-import {Link} from 'react-router-dom';
 import ArticleListScreenState from "./states";
 import LoadingSpinner from "../../components/loading-spinner";
 import ArticlesList from "./list";

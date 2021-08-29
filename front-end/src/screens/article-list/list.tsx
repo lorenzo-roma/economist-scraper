@@ -8,7 +8,7 @@ export default class ArticlesList extends React.Component<ComponentProps> {
 
     render(): ReactNode {
 
-        const listItems = this.props.items.map(a=><ArticleListItem article={a} />);
+        const listItems = this.props.items.map((a, i)=><div key={i}><ArticleListItem article={a}/></div>);
         return (
             <div className="list">
                 {listItems}

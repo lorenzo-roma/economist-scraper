@@ -1,18 +1,50 @@
 #logo {
     width: 250px;
-    height: 100%;
+    height: 100px;
     background-image: url("../assets/logo.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
 }
 
-.header{
-    height: 100px;
-}
 
 #root {
     border-top: 2px solid #d9d9d9;
     border-bottom: 2px solid #d9d9d9;
     margin: 16px;
+}
+
+.header-side{
+    text-align: right;
+    display: flex;
+    border-top: 1px solid #d9d9d9;
+    border-bottom: 1px solid #d9d9d9;
+    margin: 0 16px;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.header-button{
+    transition: all 0.15s;
+    font-family: "Roboto";
+    color: black;
+    font-weight: 500;
+    border-bottom: 2px solid black;
+}    
+
+.header-button:hover{
+    color: #3C4EAF;
+    border-bottom: 2px solid #3C4EAF;
+}    
+
+.header-button > a{
+    text-decoration: none;
+}
+
+.header-button > a:visited {
+    color: black;
+}
+
+.header-button > a:hover{
+    color: #3C4EAF;
 }

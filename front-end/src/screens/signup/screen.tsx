@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import { Link, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import SignupForm from "./signup-form";
 import ServiceProvider from "../../services/service-provider";
 import AuthResult from "../../models/auth-result";

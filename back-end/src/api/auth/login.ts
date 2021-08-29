@@ -4,11 +4,11 @@ import User from "../../model/user";
 import ServiceProvider from "../../service/service-provider";
 import Config from "../../config/config";
 import { APIResponse, APIResponseStatus } from "../../model/api-response";
+import UnauthorizedError from "../../model/unauthorized-error";
 
 export default async function performLogin(
   req: express.Request
 ): Promise<APIResponse> {
-  try {
     const username = req.body.username;
     const password = req.body.password;
     const service = await ServiceProvider.getAuthService();
@@ -23,9 +23,6 @@ export default async function performLogin(
         return { status: APIResponseStatus.ERROR, data: AuthResult.ERROR };
         break;
       default:
-        return { status: APIResponseStatus.UNAUTHORIZED, data: {} };
+        throw new UnauthorizedError();
     }
-  } catch (e) {
-    return { status: APIResponseStatus.ERROR, data: e.message };
-  }
 }

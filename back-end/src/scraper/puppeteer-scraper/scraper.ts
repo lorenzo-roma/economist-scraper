@@ -2,6 +2,8 @@ import Scraper from "../scraper-interface"
 import Article from "../../model/article"
 import puppeteer from "puppeteer"
 import ArticleDetail from "../../model/article-detail"
+import Config from "../../config/config";
+
 
 export default class PuppeteersScraper implements Scraper {
 
@@ -112,7 +114,7 @@ export default class PuppeteersScraper implements Scraper {
         await page.waitForNavigation();
         console.log("Filling first email");
         await page.waitForSelector('#email');
-        await page.type('#email', 'r.lorenzo1810@gmail.com')
+        await page.type('#email', Config.economist_email)
         console.log("Filled");
         console.log("Clicking");
         await page.waitForSelector(".login-form__submit-btn");
@@ -121,7 +123,7 @@ export default class PuppeteersScraper implements Scraper {
         console.log("Submitted first sign in form");
         await page.waitForNavigation();
         const passwordField = await page.waitForXPath('//*[@id="input-8"]');
-        await passwordField.type('86HSaYL3U7azCtz');
+        await passwordField.type(Config.economist_password);
         const loginButton = await page.waitForXPath('/html/body/div[3]/div[3]/div[1]/div/div/div/div[2]/div/div/c-lwc-login-form/lightning-card/article/div[2]/slot/div[1]/div[3]/div[2]/lightning-button/button');
         await loginButton.click();
         console.log("Submitted second sign in form");

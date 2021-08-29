@@ -6,7 +6,7 @@ export default function JsonResponse(handler: (req: express.Request) => Promise<
     return async (req: express.Request, res: express.Response, next: express.NextFunction)=>{
         try{
             const result : APIResponse =  await handler(req);
-            res.send(JSON.stringify(result));
+            res.json(result);
         } catch (err){
             next(err);
         }

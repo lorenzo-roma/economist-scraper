@@ -10,13 +10,13 @@ export default function ErrorHandler(e: Error, req: express.Request, res: expres
                 case ErrorType.UNAUTHORIZED:
                     const response = {status: APIResponseStatus.UNAUTHORIZED};
                     res.statusCode = 403;
-                    res.send(JSON.stringify(response));
+                    res.json(response);
                     return;
             }
         }
         const response = {status: APIResponseStatus.ERROR, data: e.message};
         res.statusCode = 500;
-        res.send(JSON.stringify(response));
+        res.json(response);
         console.log(`Error: ${e.message}`);
 }
 

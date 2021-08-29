@@ -16,7 +16,7 @@ export default class PuppeteersScraper implements Scraper {
     }
 
     async getArticleDetail(url: string): Promise<ArticleDetail> {
-        const browser = await puppeteer.launch({headless:true});
+        const browser = await puppeteer.launch({headless:true, args: ['--no-sandbox','--disable-setuid-sandbox']});
         const page = await browser.newPage();
         console.log(`Loading page ${url}...`);
         await page.goto(url, {timeout: 0});
@@ -60,7 +60,7 @@ export default class PuppeteersScraper implements Scraper {
     }
 
     async getArticlesList(): Promise<Article[]> {
-        const browser = await puppeteer.launch({headless:true});
+        const browser = await puppeteer.launch({headless:true, args: ['--no-sandbox','--disable-setuid-sandbox']});
         const page = await browser.newPage();
         console.log(`Loading page ${this.articlesListPageUrl}...`);
         await page.goto(this.articlesListPageUrl, {waitUntil: 'load', timeout: 0});

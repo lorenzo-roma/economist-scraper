@@ -24,9 +24,19 @@ export default class ArticleListItem extends React.Component<ComponentProps> {
           </Link>
           <div className="list-item-desc">{a.abstract}</div>
         </div>
-        <img src={a.imgUrl} onError={this.addDefaultSrc} className="list-item-img"></img>
+        {this.loadImage(a.imgUrl)}
       </div>
     );
+  }
+
+  loadImage(img: string | undefined): ReactNode {
+    if(img){
+      return (
+        <div className="center">
+        <img src={img} onError={this.addDefaultSrc} className="list-item-img"></img>
+        </div>
+      );
+    }
   }
 
   addDefaultSrc(ev: any){

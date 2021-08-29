@@ -1,5 +1,7 @@
 import React, {ReactNode} from "react";
+import { Link } from "react-router-dom";
 import AuthData from "../../models/auth-data";
+import "../../style/form.css";
 
 type ComponentProps = {onSubmit: (data:AuthData)=>void}
 type ComponentState = {username: string, password: string}
@@ -11,11 +13,28 @@ export default class LoginForm extends React.Component<ComponentProps, Component
     }
 
     render(): ReactNode {
-        return (<div>
+        return (
+            <div className="column form">
+            <div>
+            Email address <br></br>
             <input type="email" onChange={this.handleUsernameChange} value={this.state.username}></input>
+            </div>
+            <div className="mt-16">
+            Password <br></br>
             <input type="password" onChange={this.handlePasswordChange} value={this.state.password}></input>
-            <button onClick={this.handleFormSubmit}>Submit</button>
-        </div>);
+            </div>
+            <div className="row mt-16">
+                <div className="column center">
+                <div><span className="text-regular">Alreadt registered?</span> <span className="register">
+                    <Link to="/login">
+                    Go to login
+                    </Link>
+                    </span></div>
+                </div>
+            <div className="button" onClick={this.handleFormSubmit}>Sign up</div>
+            </div>
+        </div>        
+        );
     }
 
     handleUsernameChange= (el: React.ChangeEvent<HTMLInputElement>)=>{

@@ -9,7 +9,7 @@ import ArticleBody from "./article-body";
 import ArticleDetailScreenState from "./states";
 import ServiceResponse from "../../models/service-response";
 import ServiceResponseStatus from "../../models/service-response-status";
-import LogoutButton from "./logout/logout-button";
+import "../../style/detail.css";
 
 type ComponentProps = {}
 type ComponentState = {current: ArticleDetailScreenState, detail?:ArticleDetail}
@@ -53,8 +53,6 @@ export default class ArticleDetailScreen extends React.Component<ComponentProps,
     render() : ReactNode {
         return (
             <div>
-                <Link to="/">to list</Link>
-                <LogoutButton />
                 {this.loadContent()}
             </div>
         );

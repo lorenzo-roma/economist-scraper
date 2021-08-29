@@ -1,4 +1,5 @@
 import React, {ReactNode} from "react";
+import { Link } from "react-router-dom";
 import AuthData from "../../models/auth-data";
 import "../../style/form.css";
 
@@ -22,9 +23,15 @@ export default class LoginForm extends React.Component<ComponentProps, Component
             Password <br></br>
             <input type="password" onChange={this.handlePasswordChange} value={this.state.password}></input>
             </div>
-            <div className="row">
-                <div>Not registered? Register now</div>
-            <div onClick={this.handleFormSubmit}>Submit</div>
+            <div className="row mt-16">
+                <div className="column center">
+                <div><span className="text-regular">Not registered?</span> <span className="register">
+                    <Link to="/signup">
+                    Register now
+                    </Link>
+                    </span></div>
+                </div>
+            <div className="button" onClick={this.handleFormSubmit}>Log in</div>
             </div>
         </div>);
     }

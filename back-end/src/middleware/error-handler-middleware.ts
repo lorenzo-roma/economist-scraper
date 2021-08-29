@@ -16,8 +16,10 @@ export default function ErrorHandler(e: Error, req: express.Request, res: expres
         }
         const response = {status: APIResponseStatus.ERROR, data: e.message};
         res.statusCode = 500;
-        res.send(JSON.stringify(response)); 
+        res.send(JSON.stringify(response));
+        console.log(`Error: ${e.message}`);
 }
+
 
 function checkIsCustomError(error: any): ErrorType | undefined {
     return error.errorType;

@@ -1,0 +1,40 @@
+.article-section{
+    flex: 50%;
+    font-family: Roboto;
+    font-weight: 900;
+    font-size: 1.5rem;
+    padding-top: 16px;
+    margin-top: 32px;
+    border-top: 4px solid black;
+    margin-right:32px;
+}
+
+.article-subheading{
+    margin-top: 24px;
+    font-family: 'Roboto', sans-serif;
+    color: #e3120b;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.article-title{
+    margin: 8px 0;
+    font-weight: 500;
+    line-height: 2rem;
+    font-size: 2rem;
+    font-family: 'Manuale', serif;
+}
+
+.article-description{
+    margin-top: 8px;
+    font-family: 'Martel', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.5rem;
+}
+
+.article-body{
+    font-family: 'Martel', serif;
+    font-size: 1rem;
+    line-height: 1.5rem;
+}

@@ -51,3 +51,11 @@ body {
 .mb-16{
     margin-bottom:16px
 }
+
+.my-32{
+    margin: 32px 0;
+}
+
+.text-regular {
+    font-weight: 400;
+}

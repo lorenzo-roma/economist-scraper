@@ -22,3 +22,34 @@ input:focus {
     outline: none !important;
     border:2px solid black;
   }
+
+.button{
+    font-weight: 500;
+    background-color: #3C4EAF;
+    padding: 12px 24px;
+    color: white;
+    border-radius: 5px;
+}
+
+
+.button:hover{
+    background-color: #091856
+}
+
+.register > a{
+    color: black;
+    text-decoration: none;
+    padding-bottom: 3px;
+    transition: all 0.15s;
+    border-bottom: 1px solid #3C4EAF;
+}
+
+.register > a :visited{
+    color: black;
+}
+
+
+.register > a:hover{
+    color: #3C4EAF;
+}
+

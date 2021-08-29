@@ -70,9 +70,9 @@ export default class PuppeteersScraper implements Scraper {
             return elements.map((el=>{
                 const title = el.textContent;
                 const url = el.getAttribute("href");
-                const abstract = el.parentElement.nextElementSibling.textContent;
-                const category = el.parentElement.previousElementSibling.textContent
-                const imgUrl = el.parentElement.parentElement.getElementsByTagName("img")[0]?.src ?? "";
+                const abstract = el.parentElement?.nextElementSibling?.textContent;
+                const category = el.parentElement?.previousElementSibling?.textContent
+                const imgUrl = el.parentElement?.parentElement?.getElementsByTagName("img")[0]?.src ?? "";
                 return {title: title, url: url, abstract: abstract, category: category, imgUrl: imgUrl};
             }));
         }));

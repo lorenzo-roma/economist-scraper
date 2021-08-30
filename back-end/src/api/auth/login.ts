@@ -13,7 +13,7 @@ export default async function performLogin(
     const password = req.body.password;
     const service = await ServiceProvider.getAuthService();
     const user: User = { username, password };
-    const authResult = await service.login(user);
+    const authResult = await service.logIn(user);
     switch (authResult) {
       case AuthResult.SUCCESS:
         const token = service.getToken(user);

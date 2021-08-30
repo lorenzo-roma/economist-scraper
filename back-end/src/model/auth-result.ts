@@ -3,7 +3,6 @@ enum AuthResult {
     NOT_FOUND = "Not found",
     WRONG_PASSWORD = "Wrong password",
     ALREADY_SIGN_UP = "Already signed up",
-    ERROR = "Error during authentication"
 }
 
 export default AuthResult;

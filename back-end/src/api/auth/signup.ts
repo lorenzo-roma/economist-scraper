@@ -7,7 +7,6 @@ import ServiceProvider from "../../service/service-provider";
 export default async function performSignup(
   req: express.Request
 ): Promise<APIResponse> {
-  try {
     const username = req.body.username;
     const password = req.body.password;
     const service = await ServiceProvider.getAuthService();
@@ -18,13 +17,8 @@ export default async function performSignup(
         const token = service.getToken(user);
         return { status: APIResponseStatus.SUCCESS, data: { token } };
         break;
-      case AuthResult.ERROR:
-        return { status: APIResponseStatus.ERROR, data: AuthResult.ERROR };
-        break;
       default:
         return { status: APIResponseStatus.UNAUTHORIZED, data: {} };
     }
-  } catch (e) {
-    return { status: APIResponseStatus.ERROR, data: AuthResult.ERROR };
-  }
+
 }

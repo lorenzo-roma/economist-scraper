@@ -19,9 +19,6 @@ export default async function performLogin(
         const token = service.getToken(user);
         return { status: APIResponseStatus.SUCCESS, data: { token } };
         break;
-      case AuthResult.ERROR:
-        return { status: APIResponseStatus.ERROR, data: AuthResult.ERROR };
-        break;
       default:
         throw new UnauthorizedError();
     }

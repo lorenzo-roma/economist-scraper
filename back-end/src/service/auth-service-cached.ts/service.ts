@@ -18,25 +18,15 @@ export default class AuthServiceCached implements AuthService {
     cache =  {};
 
     async login(user: User): Promise<AuthResult> {
-        try{
             if(this.cache[user.username]==null) return AuthResult.NOT_FOUND;
             if(this.cache[user.username]!=user.password) return AuthResult.WRONG_PASSWORD;
             return AuthResult.SUCCESS;
-        } catch (e){
-            console.log(e);
-            return AuthResult.ERROR;
-        }
     }
 
     async signUp(user: User): Promise<AuthResult> {
-        try{
             if(this.cache[user.username]!=null) return AuthResult.ALREADY_SIGN_UP;
             this.cache[user.username] = user.password;
             return AuthResult.SUCCESS;
-        } catch (e){
-            console.log(e);
-            return AuthResult.ERROR;
-        }
     }
     
 }

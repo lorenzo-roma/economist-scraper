@@ -1,4 +1,4 @@
-import Article from "../../../src/model/article";
+import Article from "../../src/model/article";
 
 export const articleMock : Article= {
     title:"Article mock",

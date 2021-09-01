@@ -1,6 +1,6 @@
-import article from "../../../src/model/article";
-import articleDetail from "../../../src/model/article-detail";
-import Scraper from "../../../src/scraper/scraper-interface";
+import article from "../../src/model/article";
+import articleDetail from "../../src/model/article-detail";
+import Scraper from "../../src/scraper/scraper-interface";
 
 
 export default class ScraperMock implements Scraper{

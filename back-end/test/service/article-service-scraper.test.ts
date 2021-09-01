@@ -2,9 +2,9 @@ import Article from "../../src/model/article";
 import ArticleDetail from "../../src/model/article-detail";
 import Scraper from "../../src/scraper/scraper-interface";
 import ArticleServiceScraper from "../../src/service/article-service-scraper/service";
-import ScraperMock from "./mocks/scraper-mock";
-import {articlesMock} from "./mocks/article-mock";
-import {articleDetailMock} from "./mocks/article-detail-mock";
+import ScraperMock from "../mocks/scraper-mock";
+import {articlesMock} from "../mocks/article-mock";
+import {articleDetailMock} from "../mocks/article-detail-mock";
 
 let serviceTested : ArticleServiceScraper;
 let scraperMock: ScraperMock;

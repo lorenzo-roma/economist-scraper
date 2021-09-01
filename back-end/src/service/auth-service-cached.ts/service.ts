@@ -11,8 +11,12 @@ export default class AuthServiceCached implements AuthService {
         return jwt.encode(user, Config.auth_secret);
     }
     
-    verifyToken(token: string): User {
-        return jwt.decode(token, Config.auth_secret);
+    verifyToken(token: string): User | null {
+        try{
+            return jwt.decode(token, Config.auth_secret);
+        } catch (e) {
+            return null;
+        }
     }
 
     cache =  {};

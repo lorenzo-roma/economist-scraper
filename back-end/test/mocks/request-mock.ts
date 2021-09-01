@@ -1,7 +1,10 @@
+import User from "../../src/model/user";
+import { userMock } from "./user-mock";
 
 export default class RequestMock {
 
     headers: any;
+    user: User;
 
     constructor(){this.headers = {}}
 
@@ -10,14 +13,17 @@ export default class RequestMock {
     }
 
     addMockAuth(): void {
-
         this.addHeader("authorization", "Bearer abcdefg");
+    }
 
+    addMockUser(): void {
+        this.user = userMock;
     }
 
     getRequest(): any {
         return {
-            headers: this.headers
+            headers: this.headers,
+            ...{user: this.user}
         };
     }
 

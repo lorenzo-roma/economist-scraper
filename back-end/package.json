@@ -20,8 +20,8 @@
   },
   "scripts": {
     "test": "tsc -build; jest",
-    "start": "tsc -build; node dist/app.js",
-    "build": "tsc -build;",
+    "start": "node dist/src/app.js",
+    "build": "tsc",
     "dev": "tsc -w & nodemon dist/app.js"
   },
   "author": "Lorenzo Romagnoni",

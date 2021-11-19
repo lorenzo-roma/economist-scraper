@@ -6,10 +6,10 @@
 
 I wanted to try our React and challenge myself to develop a web scraping API.
 
-###FRONTEND
+### FRONTEND
 Front-end is made with React, without libraries to help in state management.
 
-###BACKEND
+### BACKEND
 Backend implemented using Express.js library.
 
 Both the applications are written in Typescript.
